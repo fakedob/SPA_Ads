@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html ng-app="app">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Ads</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="styles/styles.css"/>
+</head>
+<body ng-controller="RoutesController">
+
+    <header id="page-header">
+        <div class="text-center">
+            <p ng-cloak id="top">Ads &ndash; {{ headerText }}</p>
+        </div>
+        <ul ng-show="userLogged" ng-hide="!userLogged">
+            <li>{{userName}}</li>
+            <li><a href="" ng-click="logout()">Logout</a></li>
+        </ul>
+    </header>
+
+    <aside class="navigation">
+        <div ng-show="guestNav" ng-hide="!guestNav" ng-include="'views/shared/navigation.html'"></div>
+        <div ng-show="userNav" ng-hide="!userNav" ng-include="'views/shared/user-navigation.html'"></div>
+        <div ng-show="adminNav" ng-hide="!adminNav" ng-include="'views/shared/admin-navigation.html'"></div>
+        <div ng-show="guestNav" ng-hide="!guestNav" ng-include="'views/guest/sidebar.html'"></div>
+        <div class="clear"></div>
+    </aside>
+
+    <main id="wrapper">
+        <div ng-view></div>
+    </main>
+    <footer id="page-footer">
+        <div class="text-center">
+            <p>&copy; 2014 by Software University Foundation, No Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="node_modules/angular-route/angular-route.js"></script>
+    <script src="node_modules/angular-64/angular-base64.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/noty/js/noty/packaged/jquery.noty.packaged.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    
+    
+    
+    <script src="scripts/app.js"></script>
+    <script src="scripts/ajax-requester.js"></script>
+    <script src="scripts/data.js"></script>
+    <script src="scripts/services/messages-factory.js"></script>
+    <script src="scripts/controllers/routes-controller.js"></script>
+
+    <script src="scripts/controllers/loading-controller.js"></script>
+    <script src="scripts/controllers/home-controller.js"></script>
+    <script src="scripts/controllers/login-controller.js"></script>
+    <script src="scripts/controllers/user-home-controller.js"></script>
+    <script src="scripts/controllers/publishAdd-controller.js"></script>
+
+    <!--<script src="scripts/services/ads-factory.js"></script>
+    <script src="scripts/services/auth-factory.js"></script>
+    <script src="scripts/services/messages-factory.js"></script>-->
+    
+    <script src="scripts/controllers/register-controller.js"></script>
+    <script src="scripts/services/auth-factory.js"></script>
+    
+
+</body>
+</html>

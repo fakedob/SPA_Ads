@@ -1,0 +1,37 @@
+<section>
+    <div id="registration-form" class="form col-lg-5 col-lg-offset-4" ng-controller="RegisterController">
+
+        <header class="form-header">User Registration</header>
+        <hr/>
+
+        <form action="" name="registerForm" ng-submit="register(user, registerForm)">
+            <div class="data form-group">
+                <div class="col-lg-6">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" class="form-control" ng-model="user.username"  required/>
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" class="form-control" ng-model="user.password" ng-minlength="2" ng-maxlength="100" required/>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" class="form-control" ng-model="user.name" required/>
+                    <label for="phone">Phone:</label>
+                    <input type="number" id="phone" class="form-control" ng-model="user.phone"/>
+                    <button class="btn btn-default btn-md submit" ng-style={"marginTop":"20px","marginLeft":"50px","marginBottom":"25px"}>Register</button>
+                </div>
+                <div class="col-lg-6" ng-style={"marginTop":"63px"}>
+                    <label for="confirm-password">Confirm password:</label>
+                    <input type="password" id="confirm-password" class="form-control" ng-model="user.confirmPassword" ng-minlength="2" ng-maxlength="100" required/>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" class="form-control" ng-model="user.email" required/>
+                    <label for="town">Town:</label>
+                    <select name="" id="town" class="form-control" ng-model="user.townId">
+                        <option value="" selected="selected" disabled="disabled">Select...</option>
+                        <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
+                    </select>
+                    <a href="#/login" ng-style={"display":"block","marginTop":"25px","marginLeft":"70px"}>Login here</a>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+</section>

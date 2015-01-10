@@ -1,0 +1,44 @@
+<section>
+    <div id="edit-profile-form" class="form col-lg-3 col-lg-offset-3">
+
+        <header class="form-header">Edit Profile</header>
+        <hr/>
+
+        <div class="data form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="form-control"/>
+            <label for="email">Email:</label>
+            <input type="text" id="email" class="form-control"/>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" class="form-control"/>
+            <label for="town">Town:</label>
+            <select name="" id="town" class="form-control">
+                <option value="">{{town}}</option>
+            </select>
+
+        </div>
+
+            <button class="btn btn-default btn-md submit" ng-style={"marginBottom":"20px"}>Update</button>
+            <a href="#/user/home" class="btn btn-default btn-md submit" ng-style={"marginBottom":"20px","marginLeft":"35px"}>Cancel</a>
+        </div>
+
+    </div>
+
+    <div id="edit-password-form" class="form col-lg-3 col-lg-offset-4">
+
+        <header class="form-header">Change User Pasword</header>
+        <hr/>
+
+        <div class="data data form-group">
+            <label for="old-password">Old password:</label>
+            <input type="old-password" id="passwor" class="form-control"/>
+            <label for="new-password">New password:</label>
+            <input type="new-password" id="password" class="form-control"/>
+            <label for="confirm-password">Confirm password:</label>
+            <input type="password" id="confirm-password" class="form-control"/>
+        </div>
+
+        <button class="btn btn-default btn-md submit" ng-style={"width":"160px","marginBottom":"20px"}>Change Password</button>
+        <a href="#/user/home" class="btn btn-default btn-md submit" ng-style={"width":"100px","marginBottom":"20px","marginLeft":"15px"}>Cancel</a>
+    </div>
+</section>

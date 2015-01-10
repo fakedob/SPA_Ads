@@ -1,0 +1,16 @@
+<section>
+    <div id="login-form" class="form col-lg-3 col-lg-offset-5" ng-controller="LoginController">
+        <header class="form-header">Login</header>
+        <hr/>
+        <form name="loginForm" ng-submit="login(user, loginForm)">
+            <div class="data form-group ">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" ng-model="user.username" required/>
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" ng-model="user.password" required/>
+                <button class="btn btn-default btn-md submit" ng-style={"marginTop":"20px","marginBottom":"15px"}>Login</button>
+                <a href="#/register" class="link pull-right" ng-style={"display":"block","marginTop":"25px"}>Register here</a>
+            </div>
+        </form>
+    </div>
+</section>

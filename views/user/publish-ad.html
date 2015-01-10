@@ -1,0 +1,30 @@
+<section>
+    <div id="add-ad-form" class="form col-lg-4 col-lg-offset-4 " ng-controller="PublishAdController">
+
+        <header class="form-header">Publish New Add</header>
+        <hr />
+
+        <form name="adForm" ng-submit="publishAd(ad, adForm)">
+            <div class="data form-group ">
+                <label for="title">Title: </label>
+                <input type="text" id="title" class="form-control" ng-model="ad.title" required />
+                <label for="text">Text: </label>
+                <textarea name="" id="text" cols="30" rows="5" class="form-control" ng-model="ad.text" required></textarea>
+                <label for="image">Image: </label>
+                <input type="file" id="image" ng-model="ad.image" accept="image/*" class="form-control" base-sixty-four-input/>
+                <label for="category">Category: </label>
+                <select name="" id="category" class="form-control" ng-model="ad.category">
+                    <option value="" selected="selected" disabled="disabled">Select...</option>
+                    <option value="{{ category.id }}" ng-repeat="category in categories">{{ category.name }}</option>
+                </select>
+                <label for="town">Town: </label>
+                <select name="" id="town" class="form-control" ng-model="ad.town">
+                    <option value="" selected="selected" disabled="disabled">Select...</option>
+                    <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
+                </select>
+                <button class="btn btn-default btn-md submit">Publish</button>
+                <a href="#/user/ads" class="btn btn-default btn-md submit">Cancel</a>
+            </div>
+        </form>
+    </div>
+</section>

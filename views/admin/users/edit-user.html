@@ -1,0 +1,47 @@
+<section>
+    <div id="edit-user-form">
+
+        <header class="form-header">Edit User Profile</header>
+        <hr/>
+
+        <div class="data">
+            <label for="name">Name:</label>
+            <input type="text" id="name"/>
+            <label for="email">Email:</label>
+            <input type="text" id="email" />
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone"/>
+            <label for="town">Town:</label>
+            <select name="" id="town">
+                <option value="">{{town}}</option>
+            </select>
+            <input type="checkbox" id="admin"/>
+            <label for="admin">Is Administrator?</label>
+        </div>
+
+        <div class="panel">
+            <button>Update</button>
+            <a href="#/admin/users">Cancel</a>
+        </div>
+
+    </div>
+
+    <div class="edit-user-form">
+
+        <header class="form-header">Change User Pasword</header>
+        <hr/>
+
+        <div class="data">
+            <label for="password">New password:</label>
+            <input type="password" id="password"/>
+            <label for="confirm-password">Confirm password:</label>
+            <input type="password" id="confirm-password"/>
+        </div>
+
+        <div class="panel">
+            <button>Change Password</button>
+            <button>Cancel</button>
+        </div>
+
+    </div>
+</section>
