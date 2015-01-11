@@ -1,7 +1,7 @@
-<section class="container-fluid">
+<section class="container-fluid" ng-controller="UserAdsController">
 
     <div class="ads col-lg-offset-4">
-        <div class=" ad-container" ng-repeat="ad in ads.ads">
+        <div class=" ad-container" ng-repeat="ad in userAds.ads">
             <div class="row">
                 <div class="col-lg-6">
                     <h4 ng-style={"fontWeight":"bold"}>{{ ad.title }}</h4>
@@ -14,24 +14,28 @@
                     <img ng-src="{{ ad.imageDataUrl }}" class="img" />
                     <img data-ng-if="!ad.imageDataUrl" ng-src="images/no-image.png" class="img" />
                 </div>
+                <div class="well well-md ad-text">{{ ad.text }}</div>
 
-                <div class="well well-md ad-text ">{{ ad.text }}</div>
-                <span>Name</span>
+                <div class="well well-md ad-text" ng-show="ad.categoryName">{{ ad.categoryName }}</div>
 
-                <div class="well well-sm ownerInfo">{{ ad.ownerName }}</div>
-                <span>Email</span>
 
-                <div class="well well-sm ownerInfo"><a href="mailto:{{ad.ownerEmail}}">{{ad.ownerEmail}}</a></div>
-                <span>Tel</span>
+                <div class="well well-sm ad-text" ng-show="ad.categoryName">{{ ad.townName }}</div>
 
-                <div class="well well-sm ownerInfo">{{ ad.ownerPhone }}</div>
+
+                <div class="well well-sm ownerInfo">{{ ad.status }}</div>
+                <button class="btn btn-default btn-md submit" ng-click="deactivateAd(ad.id)" ng-show="ad.status == 'WaitingApproval' || ad.status =='Published'">Deactivate</button>
+                <button class="btn btn-default btn-md submit" ng-click="publishAgainAd(ad.id)" ng-hide="ad.status == 'WaitingApproval' || ad.status =='Published' ">Publish Again</button>
+                <a href="" ng-click="editAd(ad.id)" class="btn btn-default btn-md submit" ng-hide="ad.status == 'WaitingApproval' || ad.status =='Published'">Edit</a>
+                <a href="#/user/ads/delete" class="btn btn-default btn-md submit"  ng-hide="ad.status == 'WaitingApproval' || ad.status =='Published'">Delete</a>
+
             </div>
         </div>
     </div>
     <div class="text-center">
         <pagination total-items="totalItems" items-per-page="adsPerPage" ng-change="changePage()"
                     ng-model="currentPage"
-                    max-size="maxSize" class="pagination" boundary-links="true"></pagination>
+                    max-size="maxSize" class="pagination" boundary-links="true" ng-show="!showPager" ng-hide="showPager"></pagination>
+        <label ng-show="showPager" ng-hide="!showPager">No items match your search criteria. Please refine.</label>
     </div>
 
 </section>

@@ -13,7 +13,7 @@
 
                     <div class="image-container">
                         <img ng-src="{{ ad.imageDataUrl }}" class="img"/>
-                        <img data-ng-if="!ad.imageDataUrl" ng-src="images/no-image.png" class="img"/>
+                        <img ng-if="!ad.imageDataUrl" ng-src="images/no-image.png" class="img"/>
                     </div>
 
                     <div class="well well-md ad-text ">{{ ad.text }}</div>
@@ -32,8 +32,8 @@
         <div class="text-center">
             <pagination total-items="totalItems" items-per-page="adsPerPage" ng-click="changePage()"
                         ng-model="currentPage"
-                        max-size="maxSize" class="pagination" boundary-links="true" ng-show="showPager"></pagination>
-            <label ng-show="!showPager">No items match your search criteria. Please refine.</label>
+                        max-size="maxSize" class="pagination" boundary-links="true" ng-show="!showPager" ng-hide="showPager"></pagination>
+            <label ng-show="showPager" ng-hide="!showPager">No items match your search criteria. Please refine.</label>
         </div>
 
     </section>

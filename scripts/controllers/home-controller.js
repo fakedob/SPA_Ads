@@ -5,6 +5,7 @@
         $scope.maxSize = maxPagerSize;
         $scope.currentCategory = 0;
         $scope.currentTown = 0;
+        $scope.showPager = false;
         $scope.changePage = function () {
             Data.ads.getGuestAll(0, 0, $scope.adsPerPage, $scope.currentPage, $http, $q)
                 .then(function (data) {
@@ -28,7 +29,7 @@
             .then(function (data) {
                 $scope.ads = data;
                 $scope.totalItems = data.numItems;
-                $scope.showPager = data.numItems > $scope.adsPerPage;
+                $scope.showPager = $scope.currentPage == 1 && data.numItems == 0;
             });
         }
         processAds();

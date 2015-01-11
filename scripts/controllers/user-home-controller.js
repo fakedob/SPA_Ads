@@ -1,6 +1,5 @@
 (function () {
     app.controller('UserHomeController', function (adsPerPage, maxPagerSize, $scope, Data, $anchorScroll, $location, $http, $q) {
-        if (Data.credentials.checkUserAccess($location)) {
             $scope.currentPage = 1;
             $scope.adsPerPage = adsPerPage;
             $scope.maxSize = maxPagerSize;
@@ -29,6 +28,7 @@
                 .then(function (data) {
                     $scope.ads = data;
                     $scope.totalItems = data.numItems;
+                    $scope.showPager = $scope.currentPage == 1 && data.numItems == 0;
                 });
             }
 
@@ -49,6 +49,5 @@
                 function (error) {
                     console.log(error);
                 });
-        }
     })
 }());

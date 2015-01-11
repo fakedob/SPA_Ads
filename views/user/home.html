@@ -33,13 +33,16 @@
         <div class="text-center">
             <pagination total-items="totalItems" items-per-page="adsPerPage" ng-change="changePage()"
                         ng-model="currentPage"
-                        max-size="maxSize" class="pagination" boundary-links="true"></pagination>
+                        max-size="maxSize" class="pagination" boundary-links="true"
+                        ng-show="!showPager" ng-hide="showPager"></pagination>
+            <label ng-show="showPager" ng-hide="!showPager">No items match your search criteria. Please refine.</label>
         </div>
 
     </section>
 
     <aside class="container-fluid">
         <div class="filters col-lg-3">
+
             <div class="category-filter">
                 <header class="form-header">Categories</header>
                 <hr/>
@@ -54,6 +57,7 @@
                 </div>
             </div>
 
+
             <div class="town-filter">
                 <header class="form-header">Towns</header>
                 <hr/>
@@ -66,6 +70,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </aside>
 </div>

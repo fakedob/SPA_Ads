@@ -9,13 +9,14 @@
         $scope.towns = data;
     })
     $scope.publishAd = function (adData, adForm) {
-        if (adData.image) {
-            adData.image = 'data:' + adData.image.filetype + ';base64,' + adData.image.base64;
+        if (adData.imageDataURL) {
+            adData.imageDataURL = 'data:' + adData.imageDataURL.filetype + ';base64,' + adData.imageDataURL.base64;
         }
 
         Data.ads.add(adData, $http, $q)
         .then(function (data) {
             messages.successMessage(data.message);
+            $location.path('/user/ads');
         })
     }
 });

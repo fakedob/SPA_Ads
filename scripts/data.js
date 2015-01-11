@@ -31,10 +31,6 @@ app.factory('Data', function ($http, $q, messages) {
             return false;
         }
 
-        var headers = {
-            'Authorization': 'Bearer ' + getSessionToken()
-        }
-
         function getSessionToken() {
             return localStorage.getItem('sessionToken');
         }
@@ -67,7 +63,10 @@ app.factory('Data', function ($http, $q, messages) {
         }
 
         function getHeaders() {
-            return headers;
+            var token = getSessionToken();
+            return {
+                'Authorization': 'Bearer ' + token
+            }
         }
         function hasToken() {
             var myToken = getSessionToken();
@@ -115,7 +114,6 @@ app.factory('Data', function ($http, $q, messages) {
             var url = this._serviceUrl + 'Register';
             return this._ajaxRequester.post(url, data, this._headers(), $http, $q)
 				.then(function (data) {
-                    globalCredentials.setSessionToken(data.sessionToken);
 				    return data;
 				});
         }
@@ -164,7 +162,11 @@ app.factory('Data', function ($http, $q, messages) {
         }
 
         Ads.prototype.getUserAll = function (status, startPage, pageSize, $http, $q) {
-            return this._ajaxRequester.get(this._serviceUrl + '?Status=' + status + '&StartPage=' + startPage + '&PageSize=' + pageSize, this._headers(), $http, $q);
+            var params = '?StartPage=' + startPage + '&PageSize=' + pageSize;
+            if (status > -1) {
+                params += '&Status=' + status;
+            }
+            return this._ajaxRequester.get(this._serviceUrl + params, this._headers(), $http, $q);
         }
 
         Ads.prototype.getGuestAll = function (categoryId, townId, startPage, pageSize, $http, $q) {
@@ -220,11 +222,11 @@ app.factory('Data', function ($http, $q, messages) {
         }
 
         Common.prototype.getAllCategories = function ($http, $q) {
-            return this._ajaxRequester.get(this._catUrl,  this._headers(), $http, $q);
+            return this._ajaxRequester.get(this._catUrl, this._headers(), $http, $q);
         }
 
         Common.prototype.getAllTowns = function () {
-            return this._ajaxRequester.get(this._townsUrl,  this._headers(), $http, $q);
+            return this._ajaxRequester.get(this._townsUrl, this._headers(), $http, $q);
         }
 
         return Common;

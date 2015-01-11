@@ -1,30 +1,31 @@
-<section>
+<section ng-controller="EditAdController" ng-init="getAd()">
     <div id="edit-ad-form" class=" form col-lg-5 col-lg-offset-4">
-
         <header class="form-header">Edit Ad</header>
         <hr />
-
-        <div class="data form-group">
-            <label for="title">Title:</label>
-            <input type="text" id="title" class="form-control" value="{{ ad.title }}"/>
-            <label for="text">Text:</label>
-            <textarea name="" id="text" cols="30" rows="10" class="form-control" value="{{ ad.text }}"></textarea>
-            <label for="image">Image:</label>
-            <input type="text" id="image" class="form-control" value="{{ ad.imageDataUrl }}" />
-            <input type="file"/>
-            <button class="btn btn-default btn-md submit">Change image</button>
-            <button class="btn btn-default btn-md submit">Delete image</button>
-            <label for="category">Category:</label>
-            <select name="" id="category" class="form-control">
-                <option value="">{{ category.name }}</option>
-            </select>
-            <label for="town">Town:</label>
-            <select name="" id="town" class="form-control">
-                <option value="">{{ town.name }}</option>
-            </select>
-            <button class="btn btn-default btn-md submit">Edit</button>
-            <a href="#/user/ads">Cancel</a>
-        </div>
-
-    </div>
+        <form name="adForm" ng-submit="editAd(ad, adForm)">
+            <div class="data form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" class="form-control" ng-model="ad.title" />
+                <label for="text">Text:</label>
+                <textarea name="" id="text" cols="30" rows="10" class="form-control" ng-model="ad.text"></textarea>
+                <label for="image">Image:</label>
+                <img alt="" ng-src="{{ad.imageDataUrl}}">
+                <input type="file" ng-model="ad.imageDataURL" accept="image/*" class="form-control" base-sixty-four-input />
+                <button class="btn btn-default btn-md submit">Change image</button>
+                <button class="btn btn-default btn-md submit">Delete image</button>
+                <label for="category">Category:</label>
+                <select name="" id="category" class="form-control" ng-model="ad.categoryId">
+                    <option value="" disabled="disabled">Select...</option>
+                    <option value="{{ category.id }}" ng-repeat="category in categories">{{ category.name }}</option>
+                </select>
+                <label for="town">Town: </label>
+                <select name="" id="town" class="form-control" ng-model="ad.townId">
+                    <option value="" disabled="disabled">Select...</option>
+                    <option value="{{ town.id }}" ng-repeat="town in towns">{{ town.name }}</option>
+                </select>
+                <button class="btn btn-default btn-md submit">Edit</button>
+                <a href="#/user/ads">Cancel</a>
+            </div>
+        </form>
+</div>
 </section>
